@@ -74,7 +74,7 @@
         </plugins>
     </build>
 
-    <reporting>
+    <!--<reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>
             <plugin>
@@ -86,6 +86,6 @@
                 </configuration>
             </plugin>
         </plugins>
-    </reporting>
+    </reporting>-->
 
 </project>
