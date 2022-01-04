@@ -17,9 +17,14 @@ public class ApiDemoTest {
         };
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",description = "发起百度请求demo")
     public void ApiTest(String loginname,String type,int statusCode){
         Response response = given().body(loginname).contentType(type).header("x-auth-token", "e3c009ff9a39b46").post("http://www.baidu.com");
-        Assert.assertEquals(response.statusCode(),statusCode);//预期值写后面
+        System.out.printf(loginname);
+        if("{\"1name\":\"loginname3\",\"pwd\":\"paswd3\"}".equals(loginname)) {
+            Assert.assertEquals(response.statusCode() + 1, statusCode);//预期值写后面
+        }else {
+            Assert.assertEquals(response.statusCode(), statusCode);//预期值写后面
+        }
     }
 }
