@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
 
 public class ApiDemoTest {
     @DataProvider(name = "testData")
@@ -26,5 +27,14 @@ public class ApiDemoTest {
         }else {
             Assert.assertEquals(response.statusCode(), statusCode);//预期值写后面
         }
+    }
+
+    @Test
+    public void ApiTest2(){
+        given().when().
+                log().all().get("https://www.baidu.com").
+                then().
+                log().all().statusCode(200).
+                log().all().body(containsString("百度"));
     }
 }
